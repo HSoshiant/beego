@@ -186,6 +186,8 @@ func (fp *FileProvider) SessionDestroy(sid string) error {
 	fp.lock.Lock()
 	defer fp.lock.Unlock()
 	os.Remove(path.Join(fp.savePath, string(sid[0]), string(sid[1]), sid))
+	os.Remove(path.Join(fp.savePath, string(sid[0]), string(sid[1])))
+	os.Remove(path.Join(fp.savePath, string(sid[0])))
 	return nil
 }
 
